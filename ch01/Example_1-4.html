@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A basic clock</title>
+</head>
+
+<body>
+    <canvas id="canvas" width="600" height="300">
+        Canvas not supported
+    </canvas>
+    <script>
+        // Variables
+        const canvas = document.getElementById('canvas'),
+            context = canvas.getContext('2d'),
+            FONT_HEIGHT = 15,
+            MARGIN = 35,
+            HAND_TRUNCATION = canvas.width / 25,
+            HOUR_HAND_TRUNCATION = canvas.width / 10,
+            NUMERAL_SPACING = 20,
+            RADIUS = canvas.width / 2 - MARGIN,
+            RRADIUS_TRUNCATION = RADIUS + NUMERAL_SPACING;
+            
+        //Functions
+        function drawCircle() {
+            context.beginPath();
+            context.arc(canvas.width / 2, canvas.height/2, RADIUS, 0, Math.PI*2, true);
+            context.stroke();
+        }
+
+    </script>
+</body>
+
+</html>
