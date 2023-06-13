@@ -6,10 +6,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A basic clock</title>
+    <style>
+        body {
+            background: paleturquoise;
+        }
+
+        #canvas {
+            margin: 10px;
+            padding: 10px;
+            background: #fff;
+            border: thin inset #aaa;
+        }
+    </style>
 </head>
 
 <body>
-    <canvas id="canvas" width="600" height="300">
+    <canvas id="canvas" width="600" height="600">
         Canvas not supported
     </canvas>
     <script>
@@ -22,15 +34,33 @@
             HOUR_HAND_TRUNCATION = canvas.width / 10,
             NUMERAL_SPACING = 20,
             RADIUS = canvas.width / 2 - MARGIN,
-            RRADIUS_TRUNCATION = RADIUS + NUMERAL_SPACING;
-            
+            HAND_RADIUS = RADIUS + NUMERAL_SPACING;
+
+        console.log(canvas.width / 2 - MARGIN)
+
+
         //Functions
         function drawCircle() {
             context.beginPath();
-            context.arc(canvas.width / 2, canvas.height/2, RADIUS, 0, Math.PI*2, true);
+            context.arc(canvas.width / 2, canvas.height / 2, RADIUS, 0, Math.PI * 2, true);
             context.stroke();
         }
+        function drawNumerals() {
+            const numerals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+            let angle = 0,
+                numeralWidth = 0;
 
+            numerals.forEach(function (numeral) {
+                angle = Math.PI / 6 * (numeral - 3);
+                numeralWidth = context.measureText(numeral).width;
+                context.fillText(numeral,
+                    canvas.width / 2 + Math.cos(angle) * HAND_RADIUS - numeralWidth / 2,
+                    canvas.height / 2 + Math.sin(angle) * HAND_RADIUS + FONT_HEIGHT / 3);
+            })
+
+        }
+        drawCircle();
+        drawNumerals()
     </script>
 </body>
 
