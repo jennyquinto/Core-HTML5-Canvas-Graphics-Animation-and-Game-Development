@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <canvas id="canvas" width="600" height="600">
+    <canvas id="canvas" width="600" height="300">
         Canvas not supported
     </canvas>
     <script>
@@ -33,7 +33,7 @@
             HAND_TRUNCATION = canvas.width / 25,
             HOUR_HAND_TRUNCATION = canvas.width / 10,
             NUMERAL_SPACING = 20,
-            RADIUS = canvas.width / 2 - MARGIN,
+            RADIUS = canvas.height / 2 - MARGIN,
             HAND_RADIUS = RADIUS + NUMERAL_SPACING;
 
         console.log(canvas.width / 2 - MARGIN)
@@ -59,8 +59,11 @@
             })
 
         }
-        drawCircle();
-        drawNumerals()
+        function drawCenter () {
+            context.beginPath();
+            context.arc(canvas.width/2, canvas.height/2, 5, 0, Math.PI * 2, true);
+            context.fill();
+        }
     </script>
 </body>
 
