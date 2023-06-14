@@ -37,8 +37,9 @@
         context.fillStyle = 'crimson';
         context.strokeStyle = 'aqua';
 
-        context.fillText('Hello, world!', canvas.width / 2 - 150, canvas.height / 2 + 15);
-        context.strokeText('Hello, world!', canvas.width / 2 - 150, canvas.height / 2 + 15);
+        context.fillText('Hello, world!', canvas.width / 2 - context.measureText('Hello, world!').width/2, canvas.height / 2 + 15);
+        context.strokeText('Hello, world!', canvas.width / 2 - context.measureText('Hello, world!').width/2, canvas.height / 2 + 15);
+        console.log()
 
     </script>
 </body>
