@@ -25,7 +25,7 @@
         Canvas not supported
     </canvas>
     <script>
-        // Variables
+        // Variables................................................................................
         const canvas = document.getElementById('canvas'),
             context = canvas.getContext('2d'),
             FONT_HEIGHT = 15,
@@ -36,7 +36,7 @@
             RADIUS = canvas.height / 2 - MARGIN,
             HAND_RADIUS = RADIUS + NUMERAL_SPACING;
 
-        //Functions
+        //Functions................................................................................
         function drawCircle() {
             context.beginPath();
             context.arc(canvas.width / 2, canvas.height / 2, RADIUS, 0, Math.PI * 2, true);
@@ -73,7 +73,7 @@
                 hour = date.getHours();
             hour = hour > 12 ? hour - 12 : hour;
             drawHand(hour * 5 + (date.getMinutes() / 60) * 5, true, 0.5);
-            drawHand(date.getMinutes() * 5, false, 0.5);
+            drawHand(date.getMinutes(), false, 0.5);
             drawHand(date.getSeconds(), false, 0.2);
 
             console.log(date.getHours(), date.getMinutes(), date.getSeconds())
@@ -82,9 +82,12 @@
             context.clearRect(0, 0, canvas.width, canvas.height);
             drawCircle();
             drawCenter();
-            drawNumerals();
             drawHands();
+            drawNumerals();
         };
+        //Initialization................................................................................
+        context.font = FONT_HEIGHT + 'px Arial';
+        const loop = setInterval(drawClock, 1000);
     </script>
 </body>
 
